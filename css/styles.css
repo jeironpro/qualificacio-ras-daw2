@@ -20,12 +20,19 @@ header {
     background-color: #74f163;
     display: flex;
     gap: 1rem;
-    justify-content: space-between;
     padding: 0.5rem 1rem;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+.header-inici {
+    justify-content: center;
+}
+
+.header-ras {
+    justify-content: space-between;
 }
 
 header h1 {
@@ -248,7 +255,10 @@ footer {
 
     header h1 {
         font-size: 1.1rem;
-        text-align: left; 
+    }
+
+    .header-ras {
+        text-align: left;
     }
 
     header .tornar_inici {
