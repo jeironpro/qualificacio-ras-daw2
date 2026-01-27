@@ -15,7 +15,7 @@ const moduls_ras = [
             },
             {
                 "ra3": "Escriu codi, identificant i aplicant les funcionalitats aportades pels objectes predefinits del llenguatge.",
-                "nota": null,
+                "nota": 9.30,
                 "nota_final": null
             },
             {
@@ -50,7 +50,7 @@ const moduls_ras = [
                 "nota_final": null
             },
             {
-                "ra2": "Escriu sentències executables per un servidor web reconeixent i aplicant procediments d’integració del codi en llenguatges de marques.",
+                "ra2": "Escriu sentències executables per un servidor web reconeixent i aplicant procediments d'integració del codi en llenguatges de marques.",
                 "nota": null,
                 "nota_final": null
             },
@@ -133,7 +133,7 @@ const moduls_ras = [
         "resultats_aprenentatge": [
             {
                 "ra1": "Projecte guiat.",
-                "nota": null,
+                "nota": 7.55,
                 "nota_final": null
             },
             {
@@ -228,8 +228,9 @@ const moduls_ras = [
             }
         ]
     }
-]
+];
 
+// Calculate final grades (rounded)
 moduls_ras.forEach(modul => {
     modul.resultats_aprenentatge.forEach(ra => {
         ra.nota_final = Number.isFinite(ra.nota)
@@ -238,7 +239,7 @@ moduls_ras.forEach(modul => {
     });
 });
 
-
+// Function expression to render RAs for a specific module
 const renderRAs = function(moduleCode, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -247,15 +248,19 @@ const renderRAs = function(moduleCode, containerId) {
     if (!modul) return;
 
     modul.resultats_aprenentatge.forEach((ra, index) => {
+        // Create main RA container
         const contenidorRa = document.createElement("div");
         contenidorRa.classList.add("ra");
 
+        // Create RA name element
         const nombreRa = document.createElement("span");
         nombreRa.textContent = `RA${index + 1}`;
 
+        // Create RA content element
         const contingutRa = document.createElement("span");
         contingutRa.textContent = ra[`ra${index + 1}`];
 
+        // Create grade element
         const notaRa = document.createElement("span");
 
         const nota = ra.nota;
@@ -267,11 +272,16 @@ const renderRAs = function(moduleCode, containerId) {
             notaRa.textContent = `${nota ?? ""} (${notaFinal ?? ""})`;
         }
 
-        contenidorRa.append(nombreRa, contingutRa, notaRa);
+        // Append all elements to container
+        contenidorRa.appendChild(nombreRa);
+        contenidorRa.appendChild(contingutRa);
+        contenidorRa.appendChild(notaRa);
+        
         container.appendChild(contenidorRa);
     });
-}
+};
 
+// Render all modules
 renderRAs("0612_ICC0", "ras_0612_icc0");
 renderRAs("0613_ICC0", "ras_0613_icc0");
 renderRAs("0614_ICC0", "ras_0614_icc0");
