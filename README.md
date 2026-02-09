@@ -1,4 +1,4 @@
-# qualificacio-ras-daw2
+# web-qualificacio-ras-daw2
 
 ## 📌 Descripción
 Este proyecto forma parte de mi portafolio personal.  
